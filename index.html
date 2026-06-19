@@ -42,6 +42,7 @@
         ::-webkit-scrollbar-thumb { background: rgba(217,119,6,0.15); border-radius: 3px; }
 
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        #trail-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 
         /* LIQUID GLASS */
         .liquid-glass {
@@ -338,6 +339,7 @@
 <body>
 
 <canvas id="bg-canvas"></canvas>
+<canvas id="trail-canvas"></canvas>
 
 <div class="mobile-menu" id="mobileMenu">
     <a href="#about" onclick="closeMobileMenu()">Обо мне</a>
@@ -784,6 +786,65 @@ function animate() {
     animId = requestAnimationFrame(animate);
 }
 animate();
+
+// ===== CODE TRAIL CURSOR =====
+const trailCanvas = document.getElementById('trail-canvas');
+const trailCtx = trailCanvas.getContext('2d');
+let trailW, trailH;
+function resizeTrail() { trailW = trailCanvas.width = window.innerWidth; trailH = trailCanvas.height = window.innerHeight; }
+resizeTrail();
+window.addEventListener('resize', resizeTrail);
+
+const codeTokens = ['fn','const','=>','{}','0','1','AI','bot','api','return','if','let','async','await','import','()','[]','true','false','null','class','new','for','while','this','void','NaN'];
+const trailParticles = [];
+const TRAIL_MAX = 60;
+let trailMouseX = 0, trailMouseY = 0, trailPrevX = 0, trailPrevY = 0;
+
+document.addEventListener('mousemove', e => {
+    trailPrevX = trailMouseX;
+    trailPrevY = trailMouseY;
+    trailMouseX = e.clientX;
+    trailMouseY = e.clientY;
+    const dx = trailMouseX - trailPrevX;
+    const dy = trailMouseY - trailPrevY;
+    const speed = Math.sqrt(dx * dx + dy * dy);
+    if (speed > 3 && trailParticles.length < TRAIL_MAX) {
+        trailParticles.push({
+            x: trailMouseX + (Math.random() - 0.5) * 10,
+            y: trailMouseY + (Math.random() - 0.5) * 10,
+            token: codeTokens[Math.floor(Math.random() * codeTokens.length)],
+            opacity: 0.25 + Math.random() * 0.1,
+            life: 0,
+            maxLife: 90,
+            drift: -0.2 - Math.random() * 0.3,
+            rot: (Math.random() - 0.5) * 30,
+            size: 11 + Math.random() * 3
+        });
+    }
+});
+
+function animateTrail() {
+    trailCtx.clearRect(0, 0, trailW, trailH);
+    for (let i = trailParticles.length - 1; i >= 0; i--) {
+        const p = trailParticles[i];
+        p.life++;
+        p.y += p.drift;
+        p.x += (Math.random() - 0.5) * 0.3;
+        const progress = p.life / p.maxLife;
+        const alpha = p.opacity * (1 - progress);
+        if (p.life >= p.maxLife) { trailParticles.splice(i, 1); continue; }
+        trailCtx.save();
+        trailCtx.translate(p.x, p.y);
+        trailCtx.rotate(p.rot * Math.PI / 180 * (1 - progress));
+        trailCtx.font = `${p.size}px monospace`;
+        trailCtx.fillStyle = `rgba(217,119,6,${alpha})`;
+        trailCtx.textAlign = 'center';
+        trailCtx.fillText(p.token, 0, 0);
+        trailCtx.restore();
+    }
+    requestAnimationFrame(animateTrail);
+}
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animateTrail();
 
 // Nav scroll
 const nav = document.getElementById('nav');
