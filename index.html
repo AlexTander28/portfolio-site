@@ -245,16 +245,13 @@
         .project-card::after { content:''; position:absolute; inset:0; background:radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(255,255,255,0.06) 0%,transparent 60%); pointer-events:none; opacity:0; transition:opacity 0.3s; z-index:2; }
         .project-card:hover { transform:translateY(-8px) scale(1.02); border-color:rgba(255,255,255,0.15); box-shadow:0 24px 60px rgba(0,0,0,0.4),0 0 30px var(--accent-glow); }
         .project-card:hover::after { opacity:1; }
-        .project-screenshot { width:100%; aspect-ratio:16/10; background:linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01)); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-        .project-screenshot-inner { font-size:48px; font-weight:800; opacity:0.1; }
+        .project-screenshot { width:100%; aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
         .project-info { padding:28px; }
         .project-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
         .project-tag { padding:4px 12px; border-radius:100px; font-size:12px; font-weight:500; background:linear-gradient(135deg,rgba(217,119,6,0.12),rgba(217,119,6,0.04)); color:var(--accent); border:1px solid rgba(217,119,6,0.2); }
         .project-tag.orange { background:linear-gradient(135deg,rgba(232,112,64,0.12),rgba(232,112,64,0.04)); color:var(--accent-secondary); border-color:rgba(232,112,64,0.2); }
         .project-title { font-size:20px; font-weight:700; margin-bottom:8px; }
-        .project-desc { font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:20px; }
-        .project-link { display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:600; color:var(--accent); text-decoration:none; transition:var(--transition); cursor:pointer; }
-        .project-link:hover { gap:10px; }
+        .project-desc { font-size:14px; color:var(--text-secondary); line-height:1.6; }
 
         /* TESTIMONIALS */
         .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
@@ -607,39 +604,43 @@
     <h2 class="section-title reveal">Избранные <span style="background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">проекты</span></h2>
     <div class="projects-grid">
         <div class="project-card reveal">
-            <div class="project-screenshot"><div class="project-screenshot-inner">AI</div></div>
+            <div class="project-screenshot" style="background:linear-gradient(135deg,rgba(217,119,6,0.08),rgba(139,92,246,0.06));">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="30" stroke="url(#g1)" stroke-width="1.5" opacity="0.4"/><circle cx="40" cy="40" r="18" stroke="url(#g1)" stroke-width="1" opacity="0.3"/><circle cx="40" cy="40" r="6" fill="url(#g1)" opacity="0.6"/><path d="M40 10v10M40 60v10M10 40h10M60 40h10M18 18l7 7M55 55l7 7M18 62l7-7M55 25l7-7" stroke="url(#g1)" stroke-width="1" opacity="0.3"/><defs><linearGradient id="g1" x1="0" y1="0" x2="80" y2="80"><stop stop-color="#d97706"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs></svg>
+            </div>
             <div class="project-info">
                 <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag orange">OpenAI</span></div>
                 <h3 class="project-title">AI-контент движок</h3>
                 <p class="project-desc">Платформа генерации контента на GPT-4. Автоматизация постов, маркетинговых текстов и контента для соцсетей.</p>
-                <span class="project-link">Подробнее <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5-5-5-5"/></svg></span>
             </div>
         </div>
         <div class="project-card reveal reveal-delay-1">
-            <div class="project-screenshot"><div class="project-screenshot-inner">BOT</div></div>
+            <div class="project-screenshot" style="background:linear-gradient(135deg,rgba(0,136,204,0.08),rgba(217,119,6,0.06));">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="15" y="20" width="35" height="28" rx="6" stroke="#0088cc" stroke-width="1.5" opacity="0.5"/><rect x="30" y="32" width="35" height="28" rx="6" stroke="url(#g2)" stroke-width="1.5" opacity="0.5"/><path d="M42 42l4 4 8-8" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/><circle cx="55" cy="18" r="8" fill="#d97706" opacity="0.2"/><path d="M53 18l2 2 4-4" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/><defs><linearGradient id="g2" x1="30" y1="32" x2="65" y2="60"><stop stop-color="#0088cc"/><stop offset="1" stop-color="#d97706"/></linearGradient></defs></svg>
+            </div>
             <div class="project-info">
                 <div class="project-tags"><span class="project-tag">TypeScript</span><span class="project-tag orange">Telegram</span></div>
                 <h3 class="project-title">Telegram AI-ассистент</h3>
                 <p class="project-desc">Мультифункциональный Telegram-бот с AI: задачи, напоминания, анализ документов и голосовые команды.</p>
-                <span class="project-link">Подробнее <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5-5-5-5"/></svg></span>
             </div>
         </div>
         <div class="project-card reveal reveal-delay-2">
-            <div class="project-screenshot"><div class="project-screenshot-inner">AUTO</div></div>
+            <div class="project-screenshot" style="background:linear-gradient(135deg,rgba(34,197,94,0.06),rgba(217,119,6,0.08));">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="30" cy="30" r="14" stroke="#22c55e" stroke-width="1.5" opacity="0.4"/><circle cx="50" cy="50" r="14" stroke="url(#g3)" stroke-width="1.5" opacity="0.4"/><path d="M40 30h10M40 50H30" stroke="#d97706" stroke-width="1" opacity="0.3" stroke-dasharray="3 3"/><rect x="26" y="26" width="8" height="8" rx="2" fill="#22c55e" opacity="0.3"/><rect x="46" y="46" width="8" height="8" rx="2" fill="#d97706" opacity="0.3"/><path d="M20 60l6-4M60 20l-6 4" stroke="#d97706" stroke-width="1" opacity="0.2"/><defs><linearGradient id="g3" x1="36" y1="36" x2="64" y2="64"><stop stop-color="#22c55e"/><stop offset="1" stop-color="#d97706"/></linearGradient></defs></svg>
+            </div>
             <div class="project-info">
                 <div class="project-tags"><span class="project-tag orange">Автоматизация</span><span class="project-tag">n8n</span></div>
                 <h3 class="project-title">Бизнес-автоматизация</h3>
                 <p class="project-desc">Полная автоматизация: CRM, email-рассылки, счета, отчётность — экономия 40+ часов в неделю.</p>
-                <span class="project-link">Подробнее <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5-5-5-5"/></svg></span>
             </div>
         </div>
         <div class="project-card reveal reveal-delay-3">
-            <div class="project-screenshot"><div class="project-screenshot-inner">BOOK</div></div>
+            <div class="project-screenshot" style="background:linear-gradient(135deg,rgba(217,119,6,0.06),rgba(59,130,246,0.08));">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="16" y="18" width="48" height="44" rx="6" stroke="url(#g4)" stroke-width="1.5" opacity="0.4"/><path d="M16 30h48" stroke="url(#g4)" stroke-width="1" opacity="0.3"/><rect x="22" y="22" width="6" height="4" rx="1" fill="#d97706" opacity="0.3"/><rect x="32" y="22" width="6" height="4" rx="1" fill="#d97706" opacity="0.2"/><rect x="42" y="22" width="6" height="4" rx="1" fill="#d97706" opacity="0.15"/><rect x="22" y="36" width="6" height="6" rx="1" fill="#3b82f6" opacity="0.2"/><rect x="32" y="36" width="6" height="6" rx="1" fill="#d97706" opacity="0.4"/><rect x="42" y="36" width="6" height="6" rx="1" fill="#3b82f6" opacity="0.15"/><rect x="52" y="36" width="6" height="6" rx="1" fill="#d97706" opacity="0.2"/><circle cx="56" cy="54" r="10" fill="#d97706" opacity="0.15"/><path d="M52 54l3 3 6-6" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/><defs><linearGradient id="g4" x1="16" y1="18" x2="64" y2="62"><stop stop-color="#d97706"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs></svg>
+            </div>
             <div class="project-info">
                 <div class="project-tags"><span class="project-tag">React</span><span class="project-tag orange">Календарь</span></div>
                 <h3 class="project-title">Система записи клиентов</h3>
                 <p class="project-desc">Автоматическая запись с календарём, напоминаниями и интеграцией с Telegram для салонов и клиник.</p>
-                <span class="project-link">Подробнее <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5-5-5-5"/></svg></span>
             </div>
         </div>
     </div>
