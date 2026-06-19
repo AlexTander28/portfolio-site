@@ -206,37 +206,11 @@
         .dashboard-panel { position:sticky; top:100px; padding:32px; border-radius:var(--radius-lg); background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02),rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px) saturate(1.2); box-shadow:0 8px 32px rgba(0,0,0,0.2); }
         .dashboard-panel::before { content:''; position:absolute; top:0; left:-50%; width:200%; height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent); pointer-events:none; }
         .dashboard-title { font-size:18px; font-weight:700; margin-bottom:24px; letter-spacing:-0.3px; }
-        .dashboard-total { text-align:center; margin-bottom:32px; }
-        .dashboard-total-label { font-size:14px; color:var(--text-tertiary); margin-bottom:8px; }
-        .dashboard-total-value { font-size:48px; font-weight:800; letter-spacing:-2px; background:var(--gradient-accent); -webkit-background-clip:text; -webkit-text-fill-color:transparent; transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1); }
-        .dashboard-total-value.bump { transform:scale(1.1); }
 
-        .dashboard-bars { display:flex; flex-direction:column; gap:12px; margin-bottom:28px; }
-        .dash-bar-row { display:flex; align-items:center; gap:12px; }
-        .dash-bar-label { font-size:12px; color:var(--text-secondary); width:100px; flex-shrink:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .dash-bar-track { flex:1; height:8px; background:rgba(255,255,255,0.05); border-radius:100px; overflow:hidden; }
-        .dash-bar-fill { height:100%; border-radius:100px; background:var(--gradient-accent); transition:width 0.6s cubic-bezier(0.34,1.56,0.64,1); min-width:0; }
-        .dash-bar-value { font-size:12px; font-weight:600; color:var(--accent); width:60px; text-align:right; flex-shrink:0; }
-
-        .dashboard-donut { display:flex; justify-content:center; margin-bottom:28px; }
-        .donut-chart { position:relative; width:140px; height:140px; }
-        .donut-chart svg { width:140px; height:140px; transform:rotate(-90deg); }
-        .donut-chart circle { fill:none; stroke-width:10; stroke-linecap:round; transition:all 0.6s cubic-bezier(0.34,1.56,0.64,1); }
-        .donut-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-        .donut-center-value { font-size:24px; font-weight:800; }
-        .donut-center-label { font-size:11px; color:var(--text-tertiary); }
-
-        .dashboard-selected { display:flex; flex-direction:column; gap:8px; margin-bottom:24px; }
-        .dash-selected-item { display:flex; justify-content:space-between; align-items:center; padding:10px 14px; border-radius:10px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); font-size:13px; transition:all 0.3s; }
-        .dash-selected-item:hover { border-color:rgba(255,255,255,0.1); }
-        .dash-selected-name { color:var(--text-secondary); }
-        .dash-selected-price { font-weight:600; color:var(--accent); }
-        .dashboard-empty { text-align:center; color:var(--text-tertiary); font-size:14px; padding:40px 0; line-height:1.6; }
-
-        .dashboard-cta { width:100%; padding:16px; border-radius:var(--radius-sm); background:linear-gradient(135deg,rgba(217,119,6,0.9),rgba(232,112,64,0.9)); color:#fff; font-size:15px; font-weight:600; border:1px solid rgba(255,255,255,0.1); cursor:pointer; transition:all 0.35s cubic-bezier(0.23,1,0.32,1); box-shadow:0 4px 16px rgba(0,0,0,0.15); position:relative; overflow:hidden; }
+        .dashboard-cta { width:100%; padding:16px; border-radius:var(--radius-sm); background:linear-gradient(135deg,rgba(217,119,6,0.9),rgba(232,112,64,0.9)); color:#fff; font-size:15px; font-weight:600; border:1px solid rgba(255,255,255,0.1); cursor:pointer; transition:all 0.35s cubic-bezier(0.23,1,0.32,1); box-shadow:0 4px 16px rgba(0,0,0,0.15); position:relative; overflow:hidden; text-decoration:none; }
         .dashboard-cta::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent); transition:left 0.5s; }
         .dashboard-cta:hover::before { left:100%; }
-        .dashboard-cta:hover { transform:translateY(-2px); box-shadow:0 0 40px rgba(217,119,6,0.3),0 12px 40px rgba(217,119,6,0.2); }
+        .dashboard-cta:hover { transform:translateY(-2px); box-shadow:0 0 60px rgba(217,119,6,0.25),0 8px 32px rgba(217,119,6,0.15); }
 
         /* PROJECTS */
         .projects-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:48px; }
@@ -511,30 +485,9 @@
                 <div class="service-price">100 000 <span>₽</span></div>
             </div>
         </div>
-        <div class="dashboard-panel liquid-glass reveal" id="dashboardPanel">
-            <div class="dashboard-title">Ваш проект</div>
-            <div class="dashboard-total">
-                <div class="dashboard-total-label">Итоговая стоимость</div>
-                <div class="dashboard-total-value" id="totalValue">0 ₽</div>
-            </div>
-            <div class="dashboard-donut">
-                <div class="donut-chart">
-                    <svg viewBox="0 0 140 140">
-                        <circle cx="70" cy="70" r="55" stroke="rgba(255,255,255,0.05)" stroke-width="10" fill="none"/>
-                        <circle id="donutArc" cx="70" cy="70" r="55" stroke="url(#donutGrad)" stroke-width="10" fill="none" stroke-dasharray="0 345.6" stroke-linecap="round"/>
-                        <defs><linearGradient id="donutGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#d97706"/><stop offset="100%" stop-color="#e87040"/></linearGradient></defs>
-                    </svg>
-                    <div class="donut-center">
-                        <div class="donut-center-value" id="donutCount">0</div>
-                        <div class="donut-center-label">услуг</div>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-bars" id="dashboardBars"></div>
-            <div id="dashboardSelected">
-                <div class="dashboard-empty">Выберите услуги слева,<br>чтобы увидеть расчёт</div>
-            </div>
-            <a href="#contact" class="dashboard-cta" id="dashboardCta">Обсудить проект</a>
+        <div class="dashboard-panel liquid-glass reveal">
+            <div class="dashboard-title" style="text-align:center;">Ваш проект</div>
+            <a href="#contact" class="dashboard-cta" style="display:block; text-align:center; text-decoration:none; margin-top:16px;">Обсудить проект</a>
         </div>
     </div>
 </section>
@@ -902,44 +855,10 @@ function toggleService(card) {
 }
 
 function updateDashboard() {
-    const total = selectedServices.reduce((sum, s) => sum + s.price, 0);
-    const count = selectedServices.length;
-    const pct = Math.min(total / maxPrice, 1);
-
-    // Total value with animation
-    const totalEl = document.getElementById('totalValue');
-    totalEl.classList.add('bump');
-    setTimeout(() => totalEl.classList.remove('bump'), 300);
-    animateValue(totalEl, total);
-
-    // Donut
-    const arc = document.getElementById('donutArc');
-    const circumference = 2 * Math.PI * 55;
-    arc.style.strokeDasharray = `${pct * circumference} ${circumference}`;
-    document.getElementById('donutCount').textContent = count;
-
-    // Bars
-    const barsEl = document.getElementById('dashboardBars');
-    if (selectedServices.length === 0) { barsEl.innerHTML = ''; } else {
-        const maxS = Math.max(...selectedServices.map(s => s.price));
-        barsEl.innerHTML = selectedServices.map(s => `<div class="dash-bar-row"><div class="dash-bar-label">${s.name}</div><div class="dash-bar-track"><div class="dash-bar-fill" style="width:${(s.price / maxS) * 100}%"></div></div><div class="dash-bar-value">${formatPrice(s.price)}</div></div>`).join('');
-    }
-
-    // Selected list
-    const selEl = document.getElementById('dashboardSelected');
-    if (selectedServices.length === 0) {
-        selEl.innerHTML = '<div class="dashboard-empty">Выберите услуги слева,<br>чтобы увидеть расчёт</div>';
-    } else {
-        selEl.innerHTML = '<div class="dashboard-selected">' + selectedServices.map(s => `<div class="dash-selected-item"><span class="dash-selected-name">${s.name}</span><span class="dash-selected-price">${formatPrice(s.price)} ₽</span></div>`).join('') + '</div>';
-    }
+    // Dashboard panel is now simplified — no dynamic rendering needed
 }
 
 function formatPrice(n) { return n.toLocaleString('ru-RU'); }
-
-function animateValue(el, target) {
-    const formatted = formatPrice(target) + ' ₽';
-    el.textContent = formatted;
-}
 
 // Form
 // ===== FORM SERVICE SELECTOR =====
