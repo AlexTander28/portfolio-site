@@ -99,14 +99,16 @@
         .btn-glass { background:linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02)); color:var(--text-primary); border:1px solid rgba(255,255,255,0.1); box-shadow:0 4px 16px rgba(0,0,0,0.15); }
         .btn-glass:hover { background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.04)); border-color:rgba(255,255,255,0.18); transform:translateY(-3px) scale(1.02); box-shadow:0 12px 40px rgba(0,0,0,0.3),0 0 20px var(--accent-glow); }
 
-        /* STATS */
-        .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:80px; }
-        .stat-card { padding:32px 24px; border-radius:var(--radius-md); background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02),rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px) saturate(1.2); text-align:center; transition:all 0.4s cubic-bezier(0.23,1,0.32,1); box-shadow:0 8px 32px rgba(0,0,0,0.2); position:relative; overflow:hidden; }
-        .stat-card::before { content:''; position:absolute; top:0; left:-50%; width:200%; height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent); pointer-events:none; }
-        .stat-card:hover { transform:translateY(-6px) scale(1.03); border-color:rgba(255,255,255,0.15); box-shadow:0 20px 50px rgba(0,0,0,0.35),0 0 25px var(--accent-glow); }
-        .stat-number { font-size:36px; font-weight:800; letter-spacing:-1px; margin-bottom:4px; }
-        .stat-number .accent { background:var(--gradient-accent); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .stat-label { font-size:14px; color:var(--text-tertiary); font-weight:500; }
+        /* MARQUEE */
+        .marquee-section { margin-top:60px; overflow:hidden; }
+        .marquee-label { text-align:center; font-size:13px; color:var(--text-tertiary); margin-bottom:20px; text-transform:uppercase; letter-spacing:1px; }
+        .marquee-track { display:flex; width:max-content; animation:marqueeScroll 35s linear infinite; }
+        .marquee-track:hover { animation-play-state:paused; }
+        @keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .marquee-item { display:flex; align-items:center; gap:12px; padding:16px 28px; margin:0 12px; border-radius:100px; background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(16px); box-shadow:0 4px 16px rgba(0,0,0,0.15); white-space:nowrap; transition:all 0.3s cubic-bezier(0.23,1,0.32,1); flex-shrink:0; }
+        .marquee-item:hover { border-color:rgba(217,119,6,0.4); box-shadow:0 0 20px var(--accent-glow); transform:scale(1.05); }
+        .marquee-item svg { width:24px; height:24px; flex-shrink:0; }
+        .marquee-item span { font-size:15px; font-weight:600; color:var(--text-secondary); }
 
         /* ABOUT */
         .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:48px; }
@@ -330,8 +332,8 @@
         .reveal-delay-3 { transition-delay:0.3s; }
 
         /* RESPONSIVE */
-        @media(max-width:1024px) { .calculator-grid,.about-grid,.contact-grid { grid-template-columns:1fr; } .projects-grid,.testimonials-grid { grid-template-columns:repeat(2,1fr); } .stats { grid-template-columns:repeat(2,1fr); } }
-        @media(max-width:768px) { .nav { padding:12px 20px; } .nav-links,.nav-cta { display:none; } .mobile-menu-btn { display:block; } .section { padding:80px 20px; } .hero { padding:100px 20px 60px; } .projects-grid,.testimonials-grid,.stats,.services-list { grid-template-columns:1fr; } .about-highlights { grid-template-columns:1fr; } .footer { padding:40px 20px 30px; } .footer-inner { flex-direction:column; text-align:center; } }
+        @media(max-width:1024px) { .calculator-grid,.about-grid,.contact-grid { grid-template-columns:1fr; } .projects-grid,.testimonials-grid { grid-template-columns:repeat(2,1fr); } }
+        @media(max-width:768px) { .nav { padding:12px 20px; } .nav-links,.nav-cta { display:none; } .mobile-menu-btn { display:block; } .section { padding:80px 20px; } .hero { padding:100px 20px 60px; } .projects-grid,.testimonials-grid,.services-list { grid-template-columns:1fr; } .about-highlights { grid-template-columns:1fr; } .footer { padding:40px 20px 30px; } .footer-inner { flex-direction:column; text-align:center; } }
         @media(max-width:480px) { .hero h1 { font-size:32px; } .dashboard-total-value { font-size:36px; } }
         @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:0.01ms!important; transition-duration:0.01ms!important; } .reveal { opacity:1; transform:none; } html { scroll-behavior:auto; } }
     </style>
@@ -379,11 +381,39 @@
             <a href="#services" class="btn btn-primary">Рассчитать стоимость <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5-5-5-5"/></svg></a>
             <a href="#contact" class="btn btn-glass">Связаться</a>
         </div>
-        <div class="stats">
-            <div class="stat-card reveal"><div class="stat-number"><span class="accent" data-count="50">0</span>+</div><div class="stat-label">Проектов</div></div>
-            <div class="stat-card reveal reveal-delay-1"><div class="stat-number"><span class="accent" data-count="30">0</span>+</div><div class="stat-label">Клиентов</div></div>
-            <div class="stat-card reveal reveal-delay-2"><div class="stat-number"><span class="accent" data-count="5">0</span>+</div><div class="stat-label">Лет опыта</div></div>
-            <div class="stat-card reveal reveal-delay-3"><div class="stat-number"><span class="accent" data-count="99">0</span>%</div><div class="stat-label">Довольных</div></div>
+        <div class="marquee-section">
+            <div class="marquee-label">Стек технологий</div>
+            <div class="marquee-track">
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#3776AB"/><path d="M12 2c-2.4 0-4.6.8-6.4 2.2L12 12l6.4-7.8C16.6 2.8 14.4 2 12 2z" fill="#FFD43B"/><path d="M5.6 4.2C3.8 5.8 2.8 8.2 2.8 10.8L12 12 5.6 4.2z" fill="#306998"/><path d="M2.8 10.8c0 2.6 1 5 2.8 6.8L12 12 2.8 10.8z" fill="#FFD43B"/><path d="M5.6 17.6c1.8 1.8 4.2 2.8 6.4 2.8V12l-6.4 5.6z" fill="#306998"/><path d="M12 20.4c2.4 0 4.6-1 6.4-2.8L12 12v8.4z" fill="#FFD43B"/><path d="M18.4 17.6c1.8-1.8 2.8-4.2 2.8-6.8L12 12l6.4 5.6z" fill="#3776AB"/><path d="M21.2 10.8c0-2.6-1-5-2.8-6.8L12 12l9.2-1.2z" fill="#FFD43B"/></svg><span>Python</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#F7DF1E"/><text x="12" y="17" text-anchor="middle" fill="#000" font-family="Inter" font-size="12" font-weight="800">JS</text></svg><span>JavaScript</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" fill="#61DAFB"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.2" fill="none"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.2" fill="none" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.2" fill="none" transform="rotate(120 12 12)"/></svg><span>React</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 8.5v7L12 22l10-6.5v-7L12 2z" fill="#000" stroke="#fff" stroke-width="0.5"/><text x="12" y="15.5" text-anchor="middle" fill="#fff" font-family="Inter" font-size="8" font-weight="800">N</text></svg><span>Next.js</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 1.5l-10 6v9l10 6 10-6v-9l-10-6z" fill="#339933"/><path d="M12 4l-7 4v5l7 4 7-4V8l-7-4z" fill="#fff" opacity="0.2"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="Inter" font-size="7" font-weight="700">N</text></svg><span>Node.js</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#3178C6"/><text x="12" y="17" text-anchor="middle" fill="#fff" font-family="Inter" font-size="11" font-weight="800">TS</text></svg><span>TypeScript</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 9l10 13L22 9 12 2z" fill="#0088cc"/><path d="M12 2v20M2 9h20" stroke="#fff" stroke-width="0.5" opacity="0.3"/></svg><span>Telegram API</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#10a37f"/><path d="M8 12.5c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5c0 2-1.5 3.5-3 4v1.5h-2v-1.5c-1.5-.5-3-2-3-4z" fill="#fff"/></svg><span>OpenAI</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12v8a2 2 0 002 2h4v-6H6v-4a6 6 0 1112 0v4h-4v6h4a2 2 0 002-2v-8c0-5.52-4.48-10-10-10z" fill="#2496ED"/></svg><span>Docker</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z" fill="#336791"/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.3"/><text x="12" y="14" text-anchor="middle" fill="#fff" font-family="Inter" font-size="6" font-weight="700">PG</text></svg><span>PostgreSQL</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#DC382D"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="Inter" font-size="8" font-weight="800">R</text></svg><span>Redis</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h6v6H4V4zM14 4h6v6h-6V4zM4 14h6v6H4v-6zM14 14h6v6h-6v-6z" fill="#FF6D5A" rx="1"/><path d="M7 7v0M17 7v0M7 17v0M17 17v0" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span>n8n</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#06B6D4"/><path d="M8 16l4-12 4 12M9.5 13h5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tailwind CSS</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z" fill="#fff"/></svg><span>Git</span></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#3776AB"/><path d="M12 2c-2.4 0-4.6.8-6.4 2.2L12 12l6.4-7.8C16.6 2.8 14.4 2 12 2z" fill="#FFD43B"/><path d="M5.6 4.2C3.8 5.8 2.8 8.2 2.8 10.8L12 12 5.6 4.2z" fill="#306998"/><path d="M2.8 10.8c0 2.6 1 5 2.8 6.8L12 12 2.8 10.8z" fill="#FFD43B"/><path d="M5.6 17.6c1.8 1.8 4.2 2.8 6.4 2.8V12l-6.4 5.6z" fill="#306998"/><path d="M12 20.4c2.4 0 4.6-1 6.4-2.8L12 12v8.4z" fill="#FFD43B"/><path d="M18.4 17.6c1.8-1.8 2.8-4.2 2.8-6.8L12 12l6.4 5.6z" fill="#3776AB"/><path d="M21.2 10.8c0-2.6-1-5-2.8-6.8L12 12l9.2-1.2z" fill="#FFD43B"/></svg><span>Python</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#F7DF1E"/><text x="12" y="17" text-anchor="middle" fill="#000" font-family="Inter" font-size="12" font-weight="800">JS</text></svg><span>JavaScript</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" fill="#61DAFB"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.2" fill="none"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.2" fill="none" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.2" fill="none" transform="rotate(120 12 12)"/></svg><span>React</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 8.5v7L12 22l10-6.5v-7L12 2z" fill="#000" stroke="#fff" stroke-width="0.5"/><text x="12" y="15.5" text-anchor="middle" fill="#fff" font-family="Inter" font-size="8" font-weight="800">N</text></svg><span>Next.js</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 1.5l-10 6v9l10 6 10-6v-9l-10-6z" fill="#339933"/><path d="M12 4l-7 4v5l7 4 7-4V8l-7-4z" fill="#fff" opacity="0.2"/><text x="12" y="15" text-anchor="middle" fill="#fff" font-family="Inter" font-size="7" font-weight="700">N</text></svg><span>Node.js</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#3178C6"/><text x="12" y="17" text-anchor="middle" fill="#fff" font-family="Inter" font-size="11" font-weight="800">TS</text></svg><span>TypeScript</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 9l10 13L22 9 12 2z" fill="#0088cc"/><path d="M12 2v20M2 9h20" stroke="#fff" stroke-width="0.5" opacity="0.3"/></svg><span>Telegram API</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#10a37f"/><path d="M8 12.5c0-2.5 1.8-4.5 4-4.5s4 2 4 4.5c0 2-1.5 3.5-3 4v1.5h-2v-1.5c-1.5-.5-3-2-3-4z" fill="#fff"/></svg><span>OpenAI</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12v8a2 2 0 002 2h4v-6H6v-4a6 6 0 1112 0v4h-4v6h4a2 2 0 002-2v-8c0-5.52-4.48-10-10-10z" fill="#2496ED"/></svg><span>Docker</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7v10l10 5 10-5V7L12 2z" fill="#336791"/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.3"/><text x="12" y="14" text-anchor="middle" fill="#fff" font-family="Inter" font-size="6" font-weight="700">PG</text></svg><span>PostgreSQL</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#DC382D"/><text x="12" y="16" text-anchor="middle" fill="#fff" font-family="Inter" font-size="8" font-weight="800">R</text></svg><span>Redis</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h6v6H4V4zM14 4h6v6h-6V4zM4 14h6v6H4v-6zM14 14h6v6h-6v-6z" fill="#FF6D5A" rx="1"/><path d="M7 7v0M17 7v0M7 17v0M17 17v0" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span>n8n</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#06B6D4"/><path d="M8 16l4-12 4 12M9.5 13h5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tailwind CSS</span></div>
+                <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z" fill="#fff"/></svg><span>Git</span></div>
+            </div>
         </div>
     </div>
 </section>
@@ -858,18 +888,6 @@ function closeMobileMenu() { document.getElementById('mobileMenu').classList.rem
 const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Counter animation
-function animateCounters() {
-    document.querySelectorAll('[data-count]').forEach(el => {
-        const target = parseInt(el.dataset.count); const duration = 2000; const start = performance.now();
-        function tick(now) { const elapsed = now - start; const progress = Math.min(elapsed / duration, 1); const eased = 1 - Math.pow(1 - progress, 3); el.textContent = Math.round(eased * target); if (progress < 1) requestAnimationFrame(tick); }
-        requestAnimationFrame(tick);
-    });
-}
-const statsObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); statsObserver.disconnect(); } }); }, { threshold: 0.3 });
-const statsEl = document.querySelector('.stats');
-if (statsEl) statsObserver.observe(statsEl);
-
 // ===== SERVICE CALCULATOR =====
 const maxPrice = 850000;
 let selectedServices = [];
@@ -1112,7 +1130,7 @@ function animateMetric(id, target) {
 }
 
 // Parallax mouse
-const parallaxCards = document.querySelectorAll('.stat-card, .project-card, .testimonial-card, .about-highlight, .contact-channel, .service-card, .roi-service-btn');
+const parallaxCards = document.querySelectorAll('.project-card, .testimonial-card, .about-highlight, .contact-channel, .service-card, .roi-service-btn');
 parallaxCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
