@@ -100,7 +100,7 @@
         .btn-glass:hover { background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.04)); border-color:rgba(255,255,255,0.18); transform:translateY(-3px) scale(1.02); box-shadow:0 12px 40px rgba(0,0,0,0.3),0 0 20px var(--accent-glow); }
 
         /* MARQUEE */
-        .marquee-section { margin-top:60px; overflow:hidden; }
+        .marquee-section { margin-top:60px; overflow:hidden; width:100vw; margin-left:calc(-50vw + 50%); }
         .marquee-label { text-align:center; font-size:13px; color:var(--text-tertiary); margin-bottom:20px; text-transform:uppercase; letter-spacing:1px; }
         .marquee-track { display:flex; width:max-content; animation:marqueeScroll 35s linear infinite; }
         .marquee-track:hover { animation-play-state:paused; }
@@ -333,8 +333,8 @@
 
         /* RESPONSIVE */
         @media(max-width:1024px) { .calculator-grid,.about-grid,.contact-grid { grid-template-columns:1fr; } .projects-grid,.testimonials-grid { grid-template-columns:repeat(2,1fr); } }
-        @media(max-width:768px) { .nav { padding:12px 20px; } .nav-links,.nav-cta { display:none; } .mobile-menu-btn { display:block; } .section { padding:80px 20px; } .hero { padding:100px 20px 60px; } .projects-grid,.testimonials-grid,.services-list { grid-template-columns:1fr; } .about-highlights { grid-template-columns:1fr; } .footer { padding:40px 20px 30px; } .footer-inner { flex-direction:column; text-align:center; } }
-        @media(max-width:480px) { .hero h1 { font-size:32px; } .dashboard-total-value { font-size:36px; } }
+        @media(max-width:768px) { .nav { padding:12px 20px; } .nav-links,.nav-cta { display:none; } .mobile-menu-btn { display:block; } .section { padding:80px 20px; } .hero { padding:100px 20px 60px; } .projects-grid,.testimonials-grid,.services-list { grid-template-columns:1fr; } .about-highlights { grid-template-columns:1fr; } .footer { padding:40px 20px 30px; } .footer-inner { flex-direction:column; text-align:center; } .marquee-item { padding:12px 20px; margin:0 8px; } .marquee-item svg { width:20px; height:20px; } .marquee-item span { font-size:13px; } }
+        @media(max-width:480px) { .hero h1 { font-size:32px; } .dashboard-total-value { font-size:36px; } .marquee-item { padding:10px 16px; margin:0 6px; } .marquee-item span { font-size:12px; } }
         @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:0.01ms!important; transition-duration:0.01ms!important; } .reveal { opacity:1; transform:none; } html { scroll-behavior:auto; } }
     </style>
 </head>
