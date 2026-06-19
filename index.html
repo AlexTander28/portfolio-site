@@ -203,7 +203,7 @@
         .service-price span { font-size:13px; font-weight:500; -webkit-text-fill-color:var(--text-tertiary); }
 
         /* DASHBOARD PANEL */
-        .dashboard-panel { position:sticky; top:100px; padding:32px; border-radius:var(--radius-lg); background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02),rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px) saturate(1.2); box-shadow:0 8px 32px rgba(0,0,0,0.2); }
+        .dashboard-panel { position:sticky; top:100px; padding:32px; border-radius:var(--radius-lg); background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02),rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(20px) saturate(1.2); box-shadow:0 8px 32px rgba(0,0,0,0.2); display:flex; flex-direction:column; }
         .dashboard-panel::before { content:''; position:absolute; top:0; left:-50%; width:200%; height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent); pointer-events:none; }
         .dashboard-title { font-size:18px; font-weight:700; margin-bottom:24px; letter-spacing:-0.3px; text-align:center; }
         .dashboard-total { text-align:center; margin-bottom:32px; }
@@ -233,7 +233,7 @@
         .dash-selected-price { font-weight:600; color:var(--accent); }
         .dashboard-empty { text-align:center; color:var(--text-tertiary); font-size:14px; padding:40px 0; line-height:1.6; }
 
-        .dashboard-cta { width:100%; padding:16px; border-radius:var(--radius-sm); background:linear-gradient(135deg,rgba(217,119,6,0.9),rgba(232,112,64,0.9)); color:#fff; font-size:15px; font-weight:600; border:1px solid rgba(255,255,255,0.1); cursor:pointer; transition:all 0.35s cubic-bezier(0.23,1,0.32,1); box-shadow:0 4px 16px rgba(0,0,0,0.15); position:relative; overflow:hidden; text-decoration:none; text-align:center; }
+        .dashboard-cta { width:100%; padding:16px; border-radius:var(--radius-sm); background:linear-gradient(135deg,rgba(217,119,6,0.9),rgba(232,112,64,0.9)); color:#fff; font-size:15px; font-weight:600; border:1px solid rgba(255,255,255,0.1); cursor:pointer; transition:all 0.35s cubic-bezier(0.23,1,0.32,1); box-shadow:0 4px 16px rgba(0,0,0,0.15); position:relative; overflow:hidden; text-decoration:none; text-align:center; margin-top:auto; }
         .dashboard-cta::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent); transition:left 0.5s; }
         .dashboard-cta:hover::before { left:100%; }
         .dashboard-cta:hover { transform:translateY(-2px); box-shadow:0 0 60px rgba(217,119,6,0.25),0 8px 32px rgba(217,119,6,0.15); }
