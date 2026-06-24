@@ -197,7 +197,7 @@
         .roi-empty-icon { font-size:48px; margin-bottom:16px; opacity:0.3; }
         .roi-empty-text { font-size:14px; line-height:1.6; }
 
-        @media(max-width:768px) { .roi-grid { grid-template-columns:1fr; } .roi-services { flex-direction:row; overflow-x:auto; gap:8px; padding:8px 20px 16px; -webkit-overflow-scrolling:touch; flex-wrap:nowrap; } .roi-service-btn { padding:12px 14px; min-width:160px; flex-shrink:0; } .roi-service-btn:hover { transform:none; } .roi-service-icon { width:32px; height:32px; } .roi-service-icon svg { width:16px; height:16px; } .roi-service-name { font-size:12px; } .roi-service-tag { font-size:11px; } .roi-panel { padding:16px; } .roi-metrics { grid-template-columns:1fr; } .roi-metric-value { font-size:18px; } .roi-comparison { grid-template-columns:1fr; } .roi-comparison-value { font-size:16px; } .roi-arrow { transform:rotate(90deg); text-align:center; } }
+        @media(max-width:768px) { .roi-grid { grid-template-columns:1fr; } .roi-services { flex-direction:row; overflow-x:auto; gap:8px; padding:8px 20px 16px; -webkit-overflow-scrolling:touch; flex-wrap:nowrap; } .roi-service-btn { padding:14px 10px; width:180px; min-width:180px; max-width:180px; flex-shrink:0; } .roi-service-btn:hover { transform:none; } .roi-service-icon { width:32px; height:32px; } .roi-service-icon svg { width:16px; height:16px; } .roi-service-name { font-size:14px; } .roi-service-tag { font-size:12px; } .roi-panel { padding:16px; } .roi-metrics { grid-template-columns:1fr; } .roi-metric-value { font-size:18px; } .roi-comparison { grid-template-columns:1fr; } .roi-comparison-value { font-size:16px; } .roi-arrow { transform:rotate(90deg); text-align:center; } }
 
         /* SERVICES CALCULATOR */
         .calculator-grid { display:grid; grid-template-columns:1fr 380px; gap:32px; margin-top:48px; align-items:start; }
@@ -383,9 +383,35 @@
         /* RESPONSIVE */
         @media(max-width:1024px) { .calculator-grid,.about-grid,.contact-grid { grid-template-columns:1fr; } .services-list { display:flex; overflow-x:auto; gap:12px; padding-bottom:8px; -webkit-overflow-scrolling:touch; } .service-card { min-width:180px; flex-shrink:0; } .projects-grid { grid-template-columns:repeat(2,1fr); } .testimonials-arc { max-width:500px; } .arc-arrow-left { left:-50px; } .arc-arrow-right { right:-50px; } }
 @media(min-width:769px) { .mobile-menu { max-height:0 !important; opacity:0 !important; padding:0 12px !important; pointer-events:none; } }
-        @media(max-width:768px) { .nav { padding:12px 20px; } .nav-links,.nav-cta,.nav-dot { display:none; } .mobile-menu-btn { display:block; } .section { padding:80px 20px; } .hero { padding:100px 20px 60px; } .projects-grid { grid-template-columns:1fr; } .services-list { display:flex; overflow-x:auto; gap:8px; padding:8px 20px 16px; } .service-card { padding:14px 10px; min-width:140px; } .service-card:hover { transform:none; } .service-icon { font-size:24px; margin-bottom:6px; } .service-name { font-size:14px; margin-bottom:2px; } .service-desc { display:none; } .service-price { font-size:16px; } .dashboard-panel { position:static; padding:20px; } .dashboard-total-value { font-size:28px; } .donut-chart { width:100px; height:100px; } .donut-chart svg { width:100px; height:100px; } .about-highlights { display:flex; overflow-x:auto; gap:12px; margin-top:24px; -webkit-overflow-scrolling:touch; padding:8px 20px 20px; min-height:120px; } .about-highlight { flex-shrink:0; width:200px; min-width:200px; max-width:200px; overflow:visible; } .about-highlight:hover { transform:none; box-shadow:0 4px 16px rgba(0,0,0,0.15); } .about-image { display:block !important; width:260px; height:320px; margin:0 auto 24px; opacity:1 !important; transform:none !important; aspect-ratio:auto !important; } .about-photo { width:100%; height:100%; object-fit:cover; display:block; position:static !important; border-radius:var(--radius-lg); } .about-text h3 { font-size:20px; } .about-text p { font-size:14px; } .about-text { min-width:0; overflow:hidden; } .footer { padding:40px 20px 30px; } .footer-inner { flex-direction:column; text-align:center; } .marquee-item { padding:12px 20px; margin:0 8px; } .marquee-item:hover { transform:none; box-shadow:0 4px 16px rgba(0,0,0,0.15); } .marquee-item svg { width:20px; height:20px; } .marquee-item span { font-size:12px; } .marquee-section { padding:8px 0 32px; } .promo-marquee { padding:20px 0; } .testimonials-arc { max-width:100%; height:auto; padding:0 16px; } .testimonial-card { position:relative; opacity:1; transform:none; pointer-events:auto; display:none; } .testimonial-card.active { display:block; } .arc-arrow { display:none; } .process-line,.process-line-fill { left:24px; } .process-step,.process-step:nth-child(odd),.process-step:nth-child(even) { flex-direction:row; padding-right:0; padding-left:70px; text-align:left; } .process-step:nth-child(odd) .process-content,.process-step:nth-child(even) .process-content { padding-left:0; padding-right:0; } .process-node { position:absolute; left:0; } }
+        @media(max-width:768px) { .nav { padding:12px 20px; } .nav-links,.nav-cta,.nav-dot { display:none; } .mobile-menu-btn { display:block; } .section { padding:60px 20px; } .hero { padding:100px 20px 60px; } .projects-grid { grid-template-columns:1fr; } .services-list { display:flex; overflow-x:auto; gap:8px; padding:8px 20px 16px; } .service-card { padding:14px 10px; width:180px; min-width:180px; max-width:180px; } .service-card:hover { transform:none; } .service-icon { font-size:24px; margin-bottom:6px; } .service-name { font-size:14px; margin-bottom:2px; } .service-desc { display:none; } .service-price { font-size:16px; } .dashboard-panel { position:static; padding:20px; } .dashboard-total-value { font-size:28px; } .donut-chart { width:100px; height:100px; } .donut-chart svg { width:100px; height:100px; } .about-highlights { display:flex; overflow-x:auto; gap:12px; margin-top:24px; -webkit-overflow-scrolling:touch; padding:8px 20px 20px; min-height:120px; } .about-highlight { flex-shrink:0; width:200px; min-width:200px; max-width:200px; overflow:visible; } .about-highlight:hover { transform:none; box-shadow:0 4px 16px rgba(0,0,0,0.15); } .about-image { display:block !important; width:260px; height:320px; margin:0 auto 24px; opacity:1 !important; transform:none !important; aspect-ratio:auto !important; } .about-photo { width:100%; height:100%; object-fit:cover; display:block; position:static !important; border-radius:var(--radius-lg); } .about-text h3 { font-size:20px; } .about-text p { font-size:14px; } .about-text { min-width:0; overflow:hidden; } .footer { padding:40px 20px 30px; } .footer-inner { flex-direction:column; text-align:center; } .marquee-item { padding:12px 20px; margin:0 8px; } .marquee-item:hover { transform:none; box-shadow:0 4px 16px rgba(0,0,0,0.15); } .marquee-item svg { width:20px; height:20px; } .marquee-item span { font-size:12px; } .marquee-section { padding:8px 0 32px; } .promo-marquee { padding:20px 0; } .testimonials-arc { max-width:100%; height:auto; padding:0 16px; } .testimonial-card { position:relative; opacity:1; transform:none; pointer-events:auto; display:none; } .testimonial-card.active { display:block; } .arc-arrow { display:none; } .process-line,.process-line-fill { left:24px; } .process-step,.process-step:nth-child(odd),.process-step:nth-child(even) { flex-direction:row; padding-right:0; padding-left:70px; text-align:left; } .process-step:nth-child(odd) .process-content,.process-step:nth-child(even) .process-content { padding-left:0; padding-right:0; } .process-node { position:absolute; left:0; } }
         @media(max-width:480px) { .hero h1 { font-size:32px; } .dashboard-total-value { font-size:24px; } .marquee-item { padding:10px 16px; margin:0 6px; } .marquee-item span { font-size:12px; } .testimonial-card { padding:24px; } }
         @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:0.01ms!important; transition-duration:0.01ms!important; } .reveal { opacity:1; transform:none; } html { scroll-behavior:auto; } }
+        .tg-widget-wrap { position:fixed; bottom:24px; right:24px; z-index:99; }
+        .tg-widget { width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.35s cubic-bezier(0.23,1,0.32,1); }
+        .tg-widget:hover { transform:scale(1.1); }
+        .tg-widget svg { width:28px; height:28px; fill:var(--accent); position:relative; z-index:1; }
+        .tg-chat { position:absolute; bottom:70px; right:0; width:320px; border-radius:var(--radius-lg); opacity:0; visibility:hidden; transform:translateY(10px) scale(0.95); transition:all 0.3s cubic-bezier(0.23,1,0.32,1); pointer-events:none; overflow:hidden; }
+        .tg-chat.open { opacity:1; visibility:visible; transform:translateY(0) scale(1); pointer-events:auto; }
+        .tg-chat-header { padding:20px; display:flex; align-items:center; gap:12px; border-bottom:1px solid rgba(255,255,255,0.06); }
+        .tg-chat-avatar { width:40px; height:40px; border-radius:50%; background:var(--gradient-accent); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .tg-chat-avatar svg { width:20px; height:20px; fill:#fff; }
+        .tg-chat-info { flex:1; }
+        .tg-chat-name { font-size:14px; font-weight:600; margin-bottom:2px; }
+        .tg-chat-status { font-size:12px; color:var(--accent); }
+        .tg-chat-body { padding:0; display:flex; flex-direction:column; height:400px; }
+        .tg-chat-messages { flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px; }
+        .tg-msg { max-width:85%; padding:10px 14px; border-radius:12px; font-size:13px; line-height:1.5; }
+        .tg-msg.user { align-self:flex-end; background:linear-gradient(135deg,rgba(217,119,6,0.9),rgba(232,112,64,0.9)); color:#fff; }
+        .tg-msg.bot { align-self:flex-start; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); color:var(--text-secondary); }
+        .tg-msg.typing::after { content:'...'; animation:tgPulse 1s infinite; }
+        @keyframes tgPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+        .tg-chat-input { display:flex; gap:8px; padding:12px 16px; border-top:1px solid rgba(255,255,255,0.06); }
+        .tg-chat-input input { flex:1; padding:10px 14px; border-radius:100px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); color:var(--text-primary); font-size:13px; outline:none; font-family:inherit; }
+        .tg-chat-input input:focus { border-color:rgba(217,119,6,0.4); }
+        .tg-chat-input button { width:36px; height:36px; border-radius:50%; background:var(--gradient-accent); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s; }
+        .tg-chat-input button:hover { transform:scale(1.05); box-shadow:0 0 20px var(--accent-glow); }
+        .tg-chat-input button svg { width:16px; height:16px; fill:#fff; }
+        @media(max-width:768px) { .tg-widget-wrap { bottom:16px; right:16px; } .tg-widget { width:48px; height:48px; } .tg-widget svg { width:24px; height:24px; } .tg-chat { width:calc(100vw - 32px); right:-8px; } }
     </style>
 </head>
 <body>
@@ -402,7 +428,7 @@
             <li><a href="#projects">Проекты</a></li>
             <li><a href="#process">Этапы</a></li>
             <li><a href="#testimonials">Отзывы</a></li>
-            <li><a href="#contact">Контакт</a></li>
+            <li><a href="#contact">Контакты</a></li>
         </ul>
         <a href="#contact" class="nav-cta">Связаться</a>
         <div class="nav-dot"></div>
@@ -416,7 +442,7 @@
         <a href="#services" onclick="closeMobileMenu()">Услуги</a>
         <a href="#projects" onclick="closeMobileMenu()">Проекты</a>
         <a href="#testimonials" onclick="closeMobileMenu()">Отзывы</a>
-        <a href="#contact" onclick="closeMobileMenu()">Контакт</a>
+        <a href="#contact" onclick="closeMobileMenu()">Контакты</a>
     </div>
 </nav>
 
@@ -778,7 +804,7 @@
 
 <!-- CONTACT -->
 <section class="section" id="contact">
-    <div class="section-label reveal">Контакт</div>
+    <div class="section-label reveal">Контакты</div>
     <h2 class="section-title reveal">Давайте создадим <span style="background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">что-то крутое</span></h2>
     <div class="contact-grid">
         <div class="contact-info reveal">
@@ -852,6 +878,30 @@
         </div>
     </div>
 </footer>
+
+<div class="tg-widget-wrap">
+    <div class="tg-chat liquid-glass" id="tgChat">
+        <div class="tg-chat-header">
+            <div class="tg-chat-avatar"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
+            <div class="tg-chat-info">
+                <div class="tg-chat-name">Александр Савин</div>
+                <div class="tg-chat-status">Онлайн</div>
+            </div>
+        </div>
+        <div class="tg-chat-body">
+            <div class="tg-chat-messages" id="tgMessages">
+                <div class="tg-msg bot">Привет! Я AI-ассистент Александра. Задайте вопрос о услугах или рассчитайте стоимость проекта.</div>
+            </div>
+            <div class="tg-chat-input">
+                <input type="text" id="tgInput" placeholder="Напишите сообщение..." onkeydown="if(event.key==='Enter')sendTgMsg()">
+                <button onclick="sendTgMsg()"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+            </div>
+        </div>
+    </div>
+    <div class="tg-widget liquid-glass" onclick="document.getElementById('tgChat').classList.toggle('open')" aria-label="Telegram чат">
+        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </div>
+</div>
 
 <script>
 // ===== MESH GRADIENT + SHADER WAVES =====
@@ -1325,6 +1375,32 @@ parallaxCards.forEach(card => {
     });
     card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
+
+// AI Chat
+async function sendTgMsg() {
+    const input = document.getElementById('tgInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+    const container = document.getElementById('tgMessages');
+    container.innerHTML += '<div class="tg-msg user">' + msg.replace(/</g,'&lt;') + '</div>';
+    container.innerHTML += '<div class="tg-msg bot typing" id="tgTyping"></div>';
+    container.scrollTop = container.scrollHeight;
+    try {
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: msg })
+        });
+        const data = await res.json();
+        document.getElementById('tgTyping').textContent = data.reply;
+        document.getElementById('tgTyping').classList.remove('typing');
+    } catch (e) {
+        document.getElementById('tgTyping').textContent = 'Извините, произошла ошибка. Попробуйте позже.';
+        document.getElementById('tgTyping').classList.remove('typing');
+    }
+    container.scrollTop = container.scrollHeight;
+}
 
 // Reduced motion
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
